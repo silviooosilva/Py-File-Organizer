@@ -15,7 +15,7 @@ sou um desses que não possui tanta paciência para isso
 
 <br />
 Então , porque não automatizar esse processo todo? <br />
-Pensando nisso, trago para vocês o <b>Py - File Organizer </b>, um programa simples, super intuitívo(pensando no usuário)
+Pensando nisso, trago para você o <b>Py - File Organizer </b>, um programa simples, super intuitívo(pensando no usuário)
 para automatizar o que levaria minutos ou até mesmo horas
 
 </p>
