@@ -32,6 +32,48 @@ para automatizar o que levaria minutos ou até mesmo horas
 e o programa fará o resto por sí num piscar de olhos :rocket:
 </p>
 
+
+<div>
+
+<h1>Demo</h1>
+
+</p>Um diretório com conteúdo bem aleatório e de diferentes formatos</p>
+<p>
+<img src="./demo/1.png">
+</p>
+
+<p>Inicialização do programa! Está é a tela principal</p>
+<p>
+<img src="./demo/2.png">
+</p>
+
+<p>Aqui eu coloco o caminho do diretório que eu desejo. <b>Atenção:</b>É necessário que o caminho esteja bem inserido, sem erros!</p>
+
+<p>
+<img src="./demo/3.png">
+</p>
+
+
+<p>Aqui eu mostro a tela do programa(antes de clicar para a inicialização da organização) para que se constate o diretório e o programa antes da execução!</p>
+
+<p>
+<img src="./demo/4.png">
+</p>
+
+<p>Aqui está o diretório após a inicialização do programa! Constando também no programa, uma mensagem informando que a execução foi realizada com sucesso!</p>
+
+
+<p>
+<img src="./demo/5.png">
+</p>
+
+
+<br>
+
+<h3>NB: As demais pastas são geradas para poupar memória caso seja necessário rodar o programa novamente no mesmo diretório</h3>
+</div>
+
+
 <h1>Conclusão</h1>
 
 <p>
