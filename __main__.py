@@ -1,5 +1,4 @@
 import colorama
-
 from functions import *
 
 print(
