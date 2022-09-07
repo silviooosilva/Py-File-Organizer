@@ -23,8 +23,25 @@ para automatizar o que levaria minutos ou até mesmo horas
 <h1>Como Usar?</h1>
 
 ```
-1º Clone/Faça o download -> git clone
-
+1º Clone/Faça o download -> git clone https://github.com/silviooosilva/Py---File-Organizer
+2º Acesse o diretório do programa -> cd Py-File-Organizer
+3º Rode o programa -> python3 __main__.py
 ```
+<br>
+<p>Após esse processo todo , basta inserir/colar a localização do diretório que deseja organizar ,
+e o programa fará o resto por sí num piscar de olhos :rocket:
+</p>
+
+<h1>Conclusão</h1>
+
+<p>
+Esteja avontade para contribuir na melhoria do programa :) :rocket:
+</p>
+
+</div>
+
+<div>
+
+<h1>Feito com <3 Por : <b style="color: red">Sílvio Silva</b></h1>
 
 </div>
