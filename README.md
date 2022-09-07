@@ -42,6 +42,6 @@ Esteja avontade para contribuir na melhoria do programa :) :rocket:
 
 <div>
 
-<h1>Feito com <3 Por : <b style="color: red">Sílvio Silva</b></h1>
+<h1>Feito com 💜 Por : <b>Sílvio Silva</b></h1>
 
 </div>
