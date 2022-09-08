@@ -200,4 +200,3 @@ try:
             print(f'{Fore.RED} The Directory {dir} Does not exist. Try Again [!]')
 except:
     print(f"{Fore.RED}Aconteceu um erro não programável. Tente Novamente [!]")
-

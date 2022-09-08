@@ -24,7 +24,7 @@ if(option == 0):
     path = str(input('Paste the directory location: '))
     order(path)
 elif(option == 1):
-    print('« Go To : https://github.com/silviooosilva/Py---File-Organizer »')
+    print('« Go To : https://github.com/silviooosilva/Py-File-Organizer »')
 elif(option == 2):
     pass
 print("[!] Enjoy :) Bye")
