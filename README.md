@@ -35,6 +35,17 @@ e o programa fará o resto por sí num piscar de olhos :rocket:
 
 <div>
 
+<h1>Depenências</h1>
+
+<h3>Colorama</h3>
+pip install -r reqs.txt
+
+```
+
+</div>
+
+<div>
+
 <h1>Demo</h1>
 
 </p>Um diretório com conteúdo bem aleatório e de diferentes formatos</p>
