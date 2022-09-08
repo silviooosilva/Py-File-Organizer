@@ -35,7 +35,7 @@ e o programa fará o resto por sí num piscar de olhos :rocket:
 
 <div>
 
-<h1>Depenências</h1>
+<h1>Dependências</h1>
 
 <h3>Colorama</h3>
 
