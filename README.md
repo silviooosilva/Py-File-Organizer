@@ -38,11 +38,13 @@ e o programa fará o resto por sí num piscar de olhos :rocket:
 <h1>Depenências</h1>
 
 <h3>Colorama</h3>
-pip install -r reqs.txt
 
 ```
-
+pip install -r reqs.txt
+```
 </div>
+
+
 
 <div>
 
