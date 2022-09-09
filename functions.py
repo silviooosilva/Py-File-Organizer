@@ -5,6 +5,7 @@
 ############################
 
 import os
+import platform
 import shutil
 from colorama import *
 from os import listdir
@@ -151,9 +152,18 @@ try:
     ]
 }
 
+    # Função para limpar a tela após a inicialização 
 
+    def clear_screen():
 
+        if "windows" in platform.system().lower():
+            command = 'cls'
+        else:
+            command = 'clear'
 
+        os.system(command)
+
+    clear_screen()
 
 # Função para pegar as extensões dos arquivos
 
