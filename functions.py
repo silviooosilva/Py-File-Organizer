@@ -4,6 +4,7 @@
 #        07/09/2022        #
 ############################
 
+from calendar import c
 import os
 import platform
 import shutil
@@ -172,8 +173,6 @@ try:
         return split_name
 
 
-
-
 # Função para criar os diretórios onde serão organizados os arquivos
 
     def create_dir(dir: list, location: str):
@@ -185,6 +184,17 @@ try:
                 os.mkdir(dir)
         except:
             pass
+
+
+    def _move(arg1: str, arg2: list):
+        try:
+            shutil.move(arg1, arg2)
+            return True
+        except:
+            print('Something went wrong! Try Again.')
+            return False
+
+
 
     def order(dir: str):
         tdd = 0
@@ -200,7 +210,7 @@ try:
                         if(os.path.isfile(f"{keys[count][0]}")):
                             pass
                         else:            
-                            if(shutil.move(f"{all}", f"{keys[count][0]}")):   
+                            if(_move(all, keys[count][0])):
                                 tdd = tdd + 1
             if(tdd > 0):
                 print(f"{Fore.GREEN}Organization made with success[!]")
