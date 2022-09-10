@@ -7,154 +7,155 @@
 import os
 import platform
 import shutil
-from colorama import *
 from os import listdir
 from os.path import isfile, join
+from colorama import Fore
 
 try:
     extensions = {
-    'Images':[
-        '.png',
-        '.jpeg',
-        '.jpg',
-        '.gif',
-        '.ai',
-        '.bmp',
-        '.ico',
-        '.ps',
-        '.psd',
-        '.svg',
-        '.tif'
-    ],
+        'Images': [
+            '.png',
+            '.jpeg',
+            '.jpg',
+            '.gif',
+            '.ai',
+            '.bmp',
+            '.ico',
+            '.ps',
+            '.psd',
+            '.svg',
+            '.tif'
+        ],
 
-    'Sounds':[
-        '.wav',
-        '.mp3',
-        '.m4a',
-        '.mid',
-        '.midi',
-        '.ogg',
-        '.wma',
-        '.wpl',
-        '.cda'
-    ],
+        'Sounds': [
+            '.wav',
+            '.mp3',
+            '.m4a',
+            '.mid',
+            '.midi',
+            '.ogg',
+            '.wma',
+            '.wpl',
+            '.cda'
+        ],
 
-    'Videos':[
-        '.mp4',
-        '.mkv',
-        '.avi',
-        '.webm',
-        '.3g2',
-        '.3gp',
-        '.flv',
-        '.h264',
-        '.m4v',
-        '.mov',
-        '.mpg',
-        '.mpeg',
-        '.wmv'
-    ],
-    'Documents':[
-        '.pdf',
-        '.docx',
-        '.doc',
-        '.pptx',
-        '.pptm',
-        '.ppt',
-        '.txt',
-        '.torrent',
-        '.deb',
-        '.ods',
-        '.xls',
-        '.xlsm',
-        '.xlsx',
-        '.rtf',
-        '.wpd'
-    ],
-    'Android':[
-        '.apk',
-        '.xapk'
-    ],
-    'Compressed':[
-        '.zip',
-        '.rar',
-        '.tar.xz',
-        '.xz',
-        '.7z',
-        '.gz',
-        '.arj',
-        '.pkg',
-        '.tar.gz',
-        '.z',
-        '.tar'
-    ],
-    'Executables':[
-        '.exe',
-        '.bat',
-        '.bin',
-        '.cgi',
-        '.pl',
-        '.jar',
-        '.msi',
-        '.wsf'
-    ],
-    'Midia':[
-        '.bin',
-        '.dmg',
-        '.iso',
-        '.cso',
-        '.toast',
-        '.vcd'
-    ],
-    'Data':[
-        '.csv',
-        '.dat',
-        '.db',
-        '.dbf',
-        '.log',
-        '.mdb',
-        '.sav',
-        '.sql',
-        '.xml'
-    ],
-    'Fonts':[
-        '.fnt',
-        '.fon',
-        '.otf',
-        '.ttf'
-    ],
-    'Programming':[
-        '.htm',
-        '.html',
-        '.php',
-        '.css',
-        '.js',
-        '.jsp',
-        '.rss',
-        '.xhtml',
-        '.c',
-        '.cs',
-        '.h',
-        'java',
-        '.sh',
-        '.swift',
-        '.vb',
-        '.json'
-    ],
-    'System':[
-        '.bak',
-        '.cfg',
-        '.dll',
-        '.ini',
-        '.lnk',
-        '.sys',
-        '.tmp'
-    ]
-}
-
-    # Função para limpar a tela após a inicialização 
+        'Videos': [
+            '.mp4',
+            '.mkv',
+            '.avi',
+            '.webm',
+            '.3g2',
+            '.3gp',
+            '.flv',
+            '.h264',
+            '.m4v',
+            '.mov',
+            '.mpg',
+            '.mpeg',
+            '.wmv'
+        ],
+        'Documents': [
+            '.pdf',
+            '.docx',
+            '.doc',
+            '.pptx',
+            '.pptm',
+            '.ppt',
+            '.txt',
+            '.torrent',
+            '.deb',
+            '.ods',
+            '.xls',
+            '.xlsm',
+            '.xlsx',
+            '.rtf',
+            '.wpd'
+        ],
+        'Android': [
+            '.apk',
+            '.xapk'
+        ],
+        'Compressed': [
+            '.zip',
+            '.rar',
+            '.tar.xz',
+            '.xz',
+            '.7z',
+            '.gz',
+            '.arj',
+            '.pkg',
+            '.tar.gz',
+            '.z',
+            '.tar'
+        ],
+        'Executables': [
+            '.exe',
+            '.bat',
+            '.bin',
+            '.cgi',
+            '.pl',
+            '.jar',
+            '.msi',
+            '.wsf'
+        ],
+        'Midia': [
+            '.bin',
+            '.dmg',
+            '.iso',
+            '.cso',
+            '.toast',
+            '.vcd'
+        ],
+        'Data': [
+            '.csv',
+            '.dat',
+            '.db',
+            '.dbf',
+            '.log',
+            '.mdb',
+            '.sav',
+            '.sql',
+            '.xml'
+        ],
+        'Fonts': [
+            '.fnt',
+            '.fon',
+            '.otf',
+            '.ttf'
+        ],
+        'Programming': [
+            '.htm',
+            '.html',
+            '.php',
+            '.css',
+            '.js',
+            '.jsp',
+            '.rss',
+            '.xhtml',
+            '.c',
+            '.cs',
+            '.h',
+            'java',
+            '.sh',
+            '.swift',
+            '.vb',
+            '.json'
+        ],
+        'System': [
+            '.bak',
+            '.cfg',
+            '.dll',
+            '.ini',
+            '.lnk',
+            '.sys',
+            '.tmp'
+        ]
+    }
 
     def clear_screen():
+        """
+        Função para limpar a tela após a inicialização
+        """
 
         if "windows" in platform.system().lower():
             command = 'cls'
@@ -165,48 +166,50 @@ try:
 
     clear_screen()
 
-# Função para pegar as extensões dos arquivos
-
     def get_extension(path: list):
+        """
+        Função para pegar as extensões dos arquivos
+        """
         split_name = os.path.splitext(path)
         return split_name
 
-
-
-
-# Função para criar os diretórios onde serão organizados os arquivos
-
-    def create_dir(dir: list, location: str):
+    def create_dir(directory: list, location: str):
+        """
+        Função para criar os diretórios onde serão organizados os arquivos
+        """
         try:
             os.chdir(location)
-            if os.path.isdir(dir):
+            if os.path.isdir(directory):
                 pass
             else:
-                os.mkdir(dir)
-        except:
+                os.mkdir(directory)
+        except Exception:
             pass
 
-    def order(dir: str):
+    def order(directory: str):
         tdd = 0
         keys = list(extensions.items())
-        if(os.path.isdir(dir)):
-            onlyfiles = [f for f in listdir(dir) if isfile(join(dir, f))]
+        if os.path.isdir(directory):
+            onlyfiles = [f for f in listdir(directory)
+                         if isfile(join(directory, f))]
             for arquivo in onlyfiles:
                 for count in range(len(extensions)):
-                    create_dir(keys[count][0], dir)
+                    create_dir(keys[count][0], directory)
                     extension = "".join(get_extension(arquivo)[1]).lower()
-                    if(extension in keys[count][1]):
+                    if extension in keys[count][1]:
                         all = "".join(get_extension(arquivo))
-                        if(os.path.isfile(f"{keys[count][0]}")):
+                        if os.path.isfile(f"{keys[count][0]}"):
                             pass
-                        else:            
-                            if(shutil.move(f"{all}", f"{keys[count][0]}")):   
+                        else:
+                            if shutil.move(f"{all}", f"{keys[count][0]}"):
                                 tdd = tdd + 1
-            if(tdd > 0):
+            if tdd > 0:
                 print(f"{Fore.GREEN}Organization made with success[!]")
-            if(tdd == 0):
+            if tdd == 0:
                 print(f"{Fore.YELLOW}This dir is already organizaded[!]")
         else:
-            print(f'{Fore.RED} The Directory {dir} Does not exist. Try Again [!]')
-except:
-    print(f"{Fore.RED}Aconteceu um erro não programável. Tente Novamente [!]")
+            print(f'{Fore.RED} The Directory {directory} '
+                  f'Does not exist. Try Again [!]')
+except Exception as e:
+    print(f"{Fore.RED}Aconteceu um erro não esperado: {e.__class__.__name__}."
+          f" Tente Novamente [!]")
