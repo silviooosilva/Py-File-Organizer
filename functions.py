@@ -1,8 +1,7 @@
-############################
-#                          #
-#    By: Sílvio Silva      #
-#        07/09/2022        #
-############################
+"""
+By: Sílvio Silva
+   07/09/2022
+"""
 
 import os
 import platform
@@ -10,6 +9,9 @@ import shutil
 from os import listdir
 from os.path import isfile, join
 from colorama import Fore
+
+DRYRUN = False
+
 
 try:
     extensions = {
@@ -182,9 +184,18 @@ try:
             if os.path.isdir(directory):
                 pass
             else:
-                os.mkdir(directory)
+                if DRYRUN:
+                    print(f'Creating directory {directory}')
+                else:
+                    os.mkdir(directory)
         except Exception:
             pass
+
+    def _move(arg1, arg2):
+        if DRYRUN:
+            print(f"DRYRUN: {arg1} -> {arg2}")
+        else:
+            return shutil.move(arg1, arg2)
 
     def order(directory: str):
         tdd = 0
