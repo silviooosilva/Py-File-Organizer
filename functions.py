@@ -3,8 +3,6 @@
 #    By: Sílvio Silva      #
 #        07/09/2022        #
 ############################
-
-from calendar import c
 import os
 import platform
 import shutil
