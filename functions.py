@@ -186,6 +186,9 @@ try:
         except:
             pass
 
+    def _move(arg1, arg2):
+        return shutil.move(arg1, arg2)
+
     def order(dir: str):
         tdd = 0
         keys = list(extensions.items())
@@ -200,7 +203,7 @@ try:
                         if(os.path.isfile(f"{keys[count][0]}")):
                             pass
                         else:            
-                            if(shutil.move(f"{all}", f"{keys[count][0]}")):   
+                            if _move(f"{all}", f"{keys[count][0]}"):
                                 tdd = tdd + 1
             if(tdd > 0):
                 print(f"{Fore.GREEN}Organization made with success[!]")
@@ -208,5 +211,7 @@ try:
                 print(f"{Fore.YELLOW}This dir is already organizaded[!]")
         else:
             print(f'{Fore.RED} The Directory {dir} Does not exist. Try Again [!]')
+
+        input("Tecle enter para continuar...")
 except:
     print(f"{Fore.RED}Aconteceu um erro não programável. Tente Novamente [!]")
