@@ -1,9 +1,24 @@
 from consolemenu import ConsoleMenu
 import colorama
 from consolemenu.items import FunctionItem
+from functions import order
 
-from functions import *
-
+print(
+    f"""{colorama.Fore.WHITE}
+        ==========================
+        |Py - File Organizer 1.0 |
+        ==========================
+    """)
+print(
+    """
+    =====================
+    |        MENU       |
+    =====================
+    |[0] -  Start App   |
+    |[1] -  Info        |
+    |[2] -  Exit        |
+    |___________________|
+    """)
 
 class PyFileOrganizer:
     def __init__(self):
