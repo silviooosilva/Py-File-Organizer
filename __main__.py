@@ -1,31 +1,21 @@
+from colorama import Fore
 from consolemenu import ConsoleMenu
-import colorama
 from consolemenu.items import FunctionItem
+
 from functions import order
 
-print(
-    f"""{colorama.Fore.WHITE}
-        ==========================
-        |Py - File Organizer 1.0 |
-        ==========================
-    """)
-print(
-    """
-    =====================
-    |        MENU       |
-    =====================
-    |[0] -  Start App   |
-    |[1] -  Info        |
-    |[2] -  Exit        |
-    |___________________|
-    """)
 
 class PyFileOrganizer:
     def __init__(self):
         pass
 
+    @staticmethod
+    def _wait_user():
+        input('Tecle enter para continuar...')
+
     def run(self):
-        menu = ConsoleMenu("PyFileOrganizer", "Organize your files")
+        menu = ConsoleMenu(f"{Fore.WHITE}PyFileOrganizer",
+                           "Organize your files")
 
         start_item = FunctionItem("Start App", self.on_start_app)
         menu.append_item(start_item)
@@ -37,42 +27,15 @@ class PyFileOrganizer:
     def on_start_app(self):
         path = str(input('Paste the directory location: '))
         order(path)
+        self._wait_user()
 
     def on_info(self):
         print('« Go To : https://github.com/silviooosilva/Py-File-Organizer »')
-        input('Tecle enter para continuar...')
-
-#
-# print(
-#     f"""{colorama.Fore.WHITE}
-#         ==========================
-#         |Py - File Organizer 1.0 |
-#         ==========================
-#     """)
-# print(
-#         """
-#         =====================
-#         |        MENU       |
-#         =====================
-#         |[0] -  Start App   |
-#         |[1] -  Info        |
-#         |[2] -  Exit        |
-#         |___________________|
-#         """)
-#
-# option = int(input('>'))
-#
-# if(option == 0):
-#     path = str(input('Paste the directory location: '))
-#     order(path)
-# elif(option == 1):
-#     print('« Go To : https://github.com/silviooosilva/Py-File-Organizer »')
-# elif(option == 2):
-#     pass
+        self._wait_user()
 
 
 if __name__ == '__main__':
     app = PyFileOrganizer()
     app.run()
     print("[!] Enjoy :) Bye")
-    print(f'{colorama.Fore.YELLOW}By: Sílvio Silva')
+    print(f'{Fore.YELLOW}By: Sílvio Silva')
