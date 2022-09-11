@@ -25,7 +25,7 @@ para automatizar o que levaria minutos ou até mesmo horas
 ```
 1º Clone/Faça o download -> git clone https://github.com/silviooosilva/Py---File-Organizer
 2º Acesse o diretório do programa -> cd Py-File-Organizer
-3º Rode o programa -> python3 __main__.py
+3º Rode o programa -> python3 -m py_file_organizer.main
 ```
 <br>
 <p>Após esse processo todo , basta inserir/colar a localização do diretório que deseja organizar ,
@@ -38,9 +38,10 @@ e o programa fará o resto por sí num piscar de olhos :rocket:
 <h1>Dependências</h1>
 
 <h3>Colorama</h3>
+<h3>console-menu</h3>
 
 ```
-pip install -r reqs.txt
+pip install -r requirements.txt
 ```
 </div>
 

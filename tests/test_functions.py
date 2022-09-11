@@ -3,6 +3,8 @@ from unittest.mock import patch, MagicMock, call
 from colorama import Fore
 
 from py_file_organizer.functions import PyFileOrganizer
+# noinspection PyPackageRequirements
+from pytest import raises
 
 
 def prefixed(text):
@@ -12,7 +14,6 @@ def prefixed(text):
 
 def test_py_file_organizer():
     organizer = PyFileOrganizer('tests')
-    assert organizer.dryrun is True
     assert organizer.directory == 'tests'
 
 
@@ -42,6 +43,17 @@ def test_run_fail(mock_order, mock_create_organization_dirs, mock_check_dir):
     mock_check_dir.assert_called_once_with()
     mock_create_organization_dirs.assert_not_called()
     mock_order.assert_not_called()
+
+
+@patch.object(PyFileOrganizer, '_check_dir', side_effect=ValueError('Oops'))
+@patch(prefixed('print'))
+def test_run_raises(mock_print, mock_check_dir):
+    organizer = PyFileOrganizer('tests')
+    organizer.run()
+    mock_check_dir.assert_called_once_with()
+    mock_print.assert_called_once_with(
+        f'{Fore.RED} Error: ValueError - Oops'
+    )
 
 
 @patch.object(PyFileOrganizer, '_check_dir')
@@ -81,33 +93,6 @@ def test_create_dir_already_exists(mock_os):
     organizer._create_dir('directory')
     mock_os.chdir.assert_called_with('tests')
     mock_os.mkdir.assert_not_called()
-
-
-@patch(prefixed('os'))
-@patch(prefixed('print'))
-def test_create_dir_dryrun(mock_print, mock_os):
-    mock_os.path.isdir.return_value = False
-    organizer = PyFileOrganizer('tests', dryrun=True)
-    organizer._create_dir('directory')
-    mock_os.chdir.assert_called_once_with('tests')
-    mock_print.assert_called_once_with('Creating directory directory')
-
-
-@patch(prefixed('os.path.isdir'), side_effect=ValueError('Oops!'))
-def test_create_dir_exception(mock_os):
-    mock_os.path.isdir.return_value = False
-    organizer = PyFileOrganizer('tests', dryrun=True)
-    organizer._create_dir('directory')
-    mock_os.chdir.assert_not_called()
-
-
-@patch(prefixed('shutil'))
-@patch(prefixed('print'))
-def test_move_dryrun(mock_print, mock_shutil):
-    organizer = PyFileOrganizer('tests')
-    organizer._move('arg1', 'arg2')
-    mock_print.assert_called_once_with('DRYRUN: arg1 -> arg2')
-    mock_shutil.move.assert_not_called()
 
 
 @patch(prefixed('shutil'))
