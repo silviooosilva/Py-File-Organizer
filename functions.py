@@ -134,7 +134,7 @@ try:
         '.c',
         '.cs',
         '.h',
-        'java',
+        '.java',
         '.sh',
         '.swift',
         '.vb',
