@@ -7,6 +7,7 @@ import os
 import shutil
 from os import listdir
 from os.path import isfile, join
+
 from colorama import Fore
 
 from py_file_organizer.extensions import extensions
