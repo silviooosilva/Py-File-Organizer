@@ -3,8 +3,6 @@ from unittest.mock import patch, MagicMock, call
 from colorama import Fore
 
 from py_file_organizer.functions import PyFileOrganizer
-# noinspection PyPackageRequirements
-from pytest import raises
 
 
 def prefixed(text):

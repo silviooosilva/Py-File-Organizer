@@ -3,6 +3,7 @@ from colorama import Fore
 from consolemenu import ConsoleMenu
 # noinspection PyPackageRequirements
 from consolemenu.items import FunctionItem
+
 from py_file_organizer.functions import PyFileOrganizer
 
 

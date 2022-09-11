@@ -1,12 +1,12 @@
+from itertools import chain
 from unittest.mock import patch
 
 from colorama import Fore
 # noinspection PyPackageRequirements
 from pytest import fixture
 
-from py_file_organizer.functions import PyFileOrganizer
 from py_file_organizer.extensions import extensions
-from itertools import chain
+from py_file_organizer.functions import PyFileOrganizer
 
 
 @fixture
