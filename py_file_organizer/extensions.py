@@ -85,7 +85,6 @@ extensions = {
         '.wsf'
     ],
     'Midia': [
-        '.bin',
         '.dmg',
         '.iso',
         '.cso',
