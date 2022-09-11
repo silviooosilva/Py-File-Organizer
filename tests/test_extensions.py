@@ -15,3 +15,10 @@ def test_extensions():
     assert type(extensions['Videos']) == list
     assert type(extensions['Documents']) == list
     assert type(extensions['Android']) == list
+
+
+def test_extensions_dont_repeat():
+    all_extensions = []
+    for extension_list in extensions.values():
+        all_extensions += extension_list
+    assert len(all_extensions) == len(set(all_extensions))

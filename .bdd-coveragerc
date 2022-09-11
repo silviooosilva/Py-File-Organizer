@@ -1,0 +1,2 @@
+[run]
+omit = py_file_organizer/main.py

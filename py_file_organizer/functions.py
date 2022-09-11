@@ -49,7 +49,7 @@ class PyFileOrganizer:
 
     @staticmethod
     def _move(arg1, arg2):
-        return shutil.move(arg1, arg2)
+        shutil.move(arg1, arg2)
 
     def _order(self):
         onlyfiles = self._get_files()
@@ -75,9 +75,9 @@ class PyFileOrganizer:
         if target_dir is None or os.path.isfile(f"{target_dir}"):
             return 0
 
-        if self._move(arquivo, target_dir):
-            return 1
-        return 0
+        self._move(arquivo, target_dir)
+
+        return 1
 
     @staticmethod
     def _get_target_dir(extension):

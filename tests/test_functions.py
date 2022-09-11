@@ -181,26 +181,6 @@ def test_process_file_no_move(mock_get_target_dir,
     assert result == 0
 
 
-@patch.object(PyFileOrganizer, 'get_extension')
-@patch.object(PyFileOrganizer, '_get_target_dir')
-@patch.object(PyFileOrganizer, '_move', return_value=False)
-def test_process_file_fail_move(mock_move,
-                                mock_get_target_dir,
-                                mock_get_extension):
-    mock_file = 'file.txt'
-    mock_get_extension.return_value = 'txt'
-    mock_get_target_dir.return_value = 'target'
-
-    organizer = PyFileOrganizer('tests')
-    result = organizer._process_file(mock_file)
-
-    mock_get_extension.assert_called_once_with(mock_file)
-    mock_get_target_dir.assert_called_once_with('txt')
-    mock_move.assert_called_once_with(mock_file, 'target')
-
-    assert result == 0
-
-
 @patch(prefixed('extensions'))
 def test_get_target_dir(mock_extensions):
     mock_extensions.items = MagicMock(return_value=[('target', 'txt')])
