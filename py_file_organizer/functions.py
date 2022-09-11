@@ -14,7 +14,6 @@ from py_file_organizer.extensions import extensions
 
 class PyFileOrganizer:
     def __init__(self, directory: str, dryrun: bool = True):
-        self.dryrun = dryrun
         self.directory = directory
 
     def _check_dir(self):
@@ -25,10 +24,13 @@ class PyFileOrganizer:
         return True
 
     def run(self):
-        if not self._check_dir():
-            return
-        self._create_organization_dirs()
-        self._order()
+        try:
+            if not self._check_dir():
+                return
+            self._create_organization_dirs()
+            self._order()
+        except Exception as e:
+            print(f'{Fore.RED} Error: {e.__class__.__name__} - {e}')
 
     @staticmethod
     def get_extension(path: str):
@@ -41,22 +43,13 @@ class PyFileOrganizer:
         """
         Função para criar os diretórios onde serão organizados os arquivos
         """
-        try:
-            os.chdir(self.directory)
-            if not os.path.isdir(directory):
-                if self.dryrun:
-                    print(f'Creating directory {directory}')
-                else:
-                    os.mkdir(directory)
-        except Exception:
-            pass
+        os.chdir(self.directory)
+        if not os.path.isdir(directory):
+            os.mkdir(directory)
 
-    def _move(self, arg1, arg2):
-        if self.dryrun:
-            print(f"DRYRUN: {arg1} -> {arg2}")
-            return True
-        else:
-            return shutil.move(arg1, arg2)
+    @staticmethod
+    def _move(arg1, arg2):
+        return shutil.move(arg1, arg2)
 
     def _order(self):
         onlyfiles = self._get_files()
