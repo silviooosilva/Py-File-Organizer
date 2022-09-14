@@ -19,7 +19,6 @@ print(
         """)
 
 option = int(input('>'))
-
 if(option == 0):
     path = str(input('Paste the directory location: '))
     order(path)
