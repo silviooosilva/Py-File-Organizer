@@ -72,7 +72,9 @@ extensions = {
         '.pkg',
         '.tar.gz',
         '.z',
-        '.tar'
+        '.tar',
+        '.tgz',
+        '.bz2'
     ],
     'Executables':[
         '.exe',
