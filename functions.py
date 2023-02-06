@@ -3,7 +3,6 @@
 #    By: Sílvio Silva      #
 #        07/09/2022        #
 ############################
-from calendar import c
 import os
 import platform
 import shutil
@@ -42,27 +41,10 @@ def get_extension(path: list):
 def create_dir(dir: list, location: str):
     try:
         os.chdir(location)
-        if os.path.isdir(dir):
-            pass
-        else:
+        if not os.path.isdir(dir):
             os.mkdir(dir)
     except:
         pass
-
-
-def create_main_dir(location: str):
-    os.chdir(location)
-    path = 'Py-File-Organizer'
-
-    try:
-        if(os.path.isdir(path)):
-            pass
-        else:
-            os.mkdir(path)
-    except OSError:
-        print(f'{Fore.RED} Não foi possível criar o diretório mãe! Tente novamente [!]')
-
-
 
 
 def _move(arg1: list, arg2: list):
@@ -77,8 +59,6 @@ def _move(arg1: list, arg2: list):
 
 
 def order(dir: str):
-    # path = 'Py-File-Organizer'
-    # create_main_dir(dir)
     tdd = 0
     keys = list(extensions.items())
     if(os.path.isdir(dir)):
@@ -107,7 +87,4 @@ def order(dir: str):
     else:
             print(f'{Fore.RED} The Directory {dir} Does not exist. Try Again [!]')
 
-
-
-# print(f"{Fore.RED}Aconteceu um erro não programável. Tente Novamente [!]")
 

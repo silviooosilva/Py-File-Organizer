@@ -49,7 +49,6 @@ extensions = {
         '.ppt',
         '.txt',
         '.torrent',
-        '.deb',
         '.ods',
         '.xls',
         '.xlsm',
@@ -84,7 +83,8 @@ extensions = {
         '.pl',
         '.jar',
         '.msi',
-        '.wsf'
+        '.wsf',
+        '.deb'
     ],
     'Midia':[
         '.bin',
@@ -127,7 +127,8 @@ extensions = {
         '.sh',
         '.swift',
         '.vb',
-        '.json'
+        '.json',
+        '.py'
     ],
     'System':[
         '.bak',
