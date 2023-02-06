@@ -40,7 +40,7 @@ e o programa fará o resto por sí num piscar de olhos :rocket:
 <h3>Colorama</h3>
 
 ```
-pip install -r reqs.txt
+pip install -r requirements.txt
 ```
 </div>
 
