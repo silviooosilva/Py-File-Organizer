@@ -50,6 +50,7 @@ extensions = {
         '.txt',
         '.torrent',
         '.ods',
+        '.odt',
         '.xls',
         '.xlsm',
         '.xlsx',
@@ -109,7 +110,8 @@ extensions = {
         '.fnt',
         '.fon',
         '.otf',
-        '.ttf'
+        '.ttf',
+        '.woff2'
     ],
     'Programming':[
         '.htm',
