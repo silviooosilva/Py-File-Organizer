@@ -1,4 +1,5 @@
 extensions = {
+
     'Images':[
         '.png',
         '.jpeg',
@@ -141,4 +142,5 @@ extensions = {
         '.sys',
         '.tmp'
     ]
+
 }
