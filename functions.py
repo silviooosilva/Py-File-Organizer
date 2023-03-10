@@ -54,23 +54,45 @@ def _move(arg1: list, arg2: list):
     except:
         return False
 
+def verify_path(dir: str):
+    try:
+        if os.path.isdir(dir):
+            return True
+        return False
+    except OSError:
+        print(f'Lamentamos, mas não conseguimos realizar a operação desejada. Acompanhe o erro {OSError.args}')
+def verify_file(file: str):
+    try:
+        if os.path.isfile(file):
+            return True
+        return False
+    except OSError:
+        print(f'Lamentamos, mas não conseguimos realizar a operação desejada. Acompanhe o erro {OSError.args}')
 
-
+def list_path(dir: list):
+    try:
+        return [f for f in listdir(dir) if isfile(join(dir, f))]
+    except OSError:
+        print('Aconteceu um erro não programável. Tente novamente.')
 
 
 def order(dir: str):
     tdd = 0
     keys = list(extensions.items())
-    if(os.path.isdir(dir)):
-        onlyfiles = [f for f in listdir(dir) if isfile(join(dir, f))]
-        for arquivo in onlyfiles:
+    if(verify_path(dir)):
+        
+        for arquivo in list_path(dir):
+
+
             for count in range(len(extensions)):
                 extension = "".join(get_extension(arquivo)[1]).lower()
+
                 if(extension in keys[count][1]):
                     create_dir(keys[count][0], dir)
-                    # print(keys[count][1])
                     all = "".join(get_extension(arquivo))
-                    if(os.path.isfile(f"{keys[count][0]}")):
+
+
+                    if(verify_file(f"{keys[count][0]}")):
                         pass
                     else:
                                     
