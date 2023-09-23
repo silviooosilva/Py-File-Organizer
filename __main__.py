@@ -4,7 +4,7 @@ from functions import *
 print(
     f"""{colorama.Fore.WHITE}
         ==========================
-        |Py - File Organizer 1.0 |
+        |Py - File Organizer 1.2 |
         ==========================
     """)
 print(
