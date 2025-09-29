@@ -1,1 +1,6 @@
-/__pycache__/
+.idea/
+__pycache__/
+*.pyc
+.coverage
+.pytest_cache/
+.venv/
