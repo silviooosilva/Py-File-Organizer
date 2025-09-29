@@ -1,1 +1,2 @@
 colorama>=0.4.4
+console-menu==0.7.1

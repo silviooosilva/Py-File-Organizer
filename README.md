@@ -1,102 +1,80 @@
-# Py - File Organizer V1.2
-" Eu vou ajudar você :) :rocket:"
+# Py File Organizer
 
-<div style="text-align: center">
+Organize automaticamente arquivos em pastas baseadas na extensao, mantendo seus diretórios sempre limpos.
 
-<h1>Proposta</h1>
-<p>
-A principal motivação que me levou a construir esse programa, deve - se a factores organizacionais,
-eu sei que você já se deparou com um diretório super bagunçado , e consequentemente , acabaste por não
-achar o que procuravas... 
+## Visao geral
+- Detecta a extensao de cada arquivo e move para a pasta correspondente definida em `py_file_organizer/extensions.py`.
+- Interface em modo texto usando `console-menu` para facilitar o uso.
+- Tratamento de erros basico para diretórios inexistentes ou ja organizados.
 
-<br/>
-É meio chato e aborrecido ter que ficar criando pastas, procurando cada arquivo e depois o mover para as respectivas pastas, 
-sou um desses que não possui tanta paciência para isso 
+## Pre-requisitos
+- Python 3.8 ou superior.
+- `pip` configurado no PATH.
+- Ambiente virtual (opcional, mas recomendado).
 
-<br />
-Então , porque não automatizar esse processo todo? <br />
-Pensando nisso, trago para você o <b>Py - File Organizer </b>, um programa simples, super intuitívo(pensando no usuário)
-para automatizar o que levaria minutos ou até mesmo horas
+## Como configurar o ambiente
+```bash
+# clone o repositorio
+git clone https://github.com/silviooosilva/Py-File-Organizer.git
+cd Py-File-Organizer
 
-</p>
+# (opcional) crie e ative um ambiente virtual
+python3 -m venv .venv
+source .venv/bin/activate  # Windows: .venv\\Scripts\\activate
 
-<h1>Como Usar?</h1>
-
-```
-1º Clone/Faça o download -> git clone https://github.com/silviooosilva/Py---File-Organizer
-2º Acesse o diretório do programa -> cd Py-File-Organizer
-3º Rode o programa -> python3 __main__.py
-```
-<br>
-<p>Após esse processo todo , basta inserir/colar a localização do diretório que deseja organizar ,
-e o programa fará o resto por sí num piscar de olhos :rocket:
-</p>
-
-
-<div>
-
-<h1>Dependências</h1>
-
-<h3>Colorama</h3>
-
-```
+# dependencias do aplicativo
 pip install -r requirements.txt
+
+# dependencias para desenvolvimento e testes
+pip install -r requirements_dev.txt
 ```
-</div>
 
+## Como executar o organizador
+```bash
+python3 -m py_file_organizer.main
+```
+O programa abre um menu interativo. Escolha `Start App`, cole o caminho absoluto do diretorio que deseja organizar e confirme. As pastas sao criadas conforme o mapeamento definido em `py_file_organizer/extensions.py`.
 
+## Testes e manutencao de qualidade
+### Testes unitarios
+```bash
+python3 -m pytest tests/ -v
+```
+Ou utilize o atalho com relatorio de cobertura:
+```bash
+make tests
+```
 
-<div>
+### Testes comportamentais (BDD)
+```bash
+python3 -m pytest bdd/ -v
+```
+Ou ainda:
+```bash
+make bdd
+```
 
-<h1>Demo</h1>
+### Lint
+```bash
+flake8 .
+```
+(O comando `make lint` executa os testes com cobertura e, em seguida, roda o lint.)
 
-</p>Um diretório com conteúdo bem aleatório e de diferentes formatos</p>
-<p>
-<img src="./demo/1.png">
-</p>
+## Estrutura do projeto
+```
+py_file_organizer/
+├── main.py            # Interface interativa baseada em console-menu
+├── functions.py       # Regras de organizacao de arquivos
+├── extensions.py      # Mapeamento de extensoes para pastas
+└── __init__.py
+```
+Os testes unitarios vivem em `tests/` e os cenarios comportamento em `bdd/`. Imagens de demonstracao estao em `demo/`.
 
-<p>Inicialização do programa! Está é a tela principal</p>
-<p>
-<img src="./demo/2.png">
-</p>
+## Contribuindo
+Sinta-se a vontade para abrir issues ou pull requests. Antes de enviar mudancas, execute os testes (`make tests`) e o lint (`flake8 .`) para garantir que tudo continua funcionando.
 
-<p>Aqui eu coloco o caminho do diretório que eu desejo. <b>Atenção:</b>É necessário que o caminho esteja bem inserido, sem erros!</p>
+## Licenca
+Distribuido sob a licenca MIT. Consulte `LICENSE` para mais detalhes.
 
-<p>
-<img src="./demo/3.png">
-</p>
-
-
-<p>Aqui eu mostro a tela do programa(antes de clicar para a inicialização da organização) para que se constate o diretório e o programa antes da execução!</p>
-
-<p>
-<img src="./demo/4.png">
-</p>
-
-<p>Aqui está o diretório após a inicialização do programa! Constando também no programa, uma mensagem informando que a execução foi realizada com sucesso!</p>
-
-
-<p>
-<img src="./demo/5.png">
-</p>
-
-
-<br>
-
-<h3>NB: As demais pastas são geradas para poupar memória caso seja necessário rodar o programa novamente no mesmo diretório</h3>
-</div>
-
-
-<h1>Conclusão</h1>
-
-<p>
-Esteja avontade para contribuir na melhoria do programa :) :rocket:
-</p>
-
-</div>
-
-<div>
-
-<h1>Feito com 💜 Por : <b>Sílvio Silva</b></h1>
-
-</div>
+## Autor
+Projeto criado por Silvio Silva.
