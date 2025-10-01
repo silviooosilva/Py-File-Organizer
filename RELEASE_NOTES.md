@@ -5,7 +5,7 @@
 ### Highlights
 - Rewrote the project README with updated setup, execution, and testing instructions to match the current workflow.
 - Documented optional virtual environment usage and separated runtime dependencies from development-only tooling.
- - Clarified how to run the interactive console menu (`python3 -m py_file_organizer.main`), documented the new command-line directory parameter, and outlined the extension mapping in `py_file_organizer/extensions.py`.
+- Clarified how to run the interactive console menu (`python3 -m py_file_organizer.main`), documented the optional command-line directory parameter, and explained the new background execution mode.
 - Added explicit guidance for running unit tests, BDD scenarios, and linting through both raw commands and Makefile shortcuts.
 
 ### Fixed / Improved
