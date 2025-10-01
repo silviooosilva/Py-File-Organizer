@@ -63,8 +63,11 @@ def test_add_start_item(mock_function_item):
     menu.append_item.assert_called_once_with(mock_function_item())
 
 
-@patch(prefixed('input'))
-@patch(prefixed('PyFileOrganizer'))
+from builtins import input as builtin_input
+from py_file_organizer.functions import PyFileOrganizer as OrganizerClass
+
+@patch('builtins.input')
+@patch('py_file_organizer.functions.PyFileOrganizer')
 @patch.object(PyFileOrganizerUI, '_wait_user')
 def test_on_start_app(mock_wait_user,
                       mock_py_file_organizer,
