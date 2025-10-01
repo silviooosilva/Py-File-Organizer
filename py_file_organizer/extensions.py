@@ -10,7 +10,9 @@ extensions = {
         '.ps',
         '.psd',
         '.svg',
-        '.tif'
+        '.tif',
+        '.tiff',
+        '.heic'
     ],
 
     'Sounds': [
@@ -22,7 +24,9 @@ extensions = {
         '.ogg',
         '.wma',
         '.wpl',
-        '.cda'
+        '.cda',
+        '.aac',
+        '.flac'
     ],
 
     'Videos': [
@@ -38,7 +42,9 @@ extensions = {
         '.mov',
         '.mpg',
         '.mpeg',
-        '.wmv'
+        '.wmv',
+        '.m2ts',
+        '.mts'
     ],
     'Documents': [
         '.pdf',
@@ -55,7 +61,10 @@ extensions = {
         '.xlsm',
         '.xlsx',
         '.rtf',
-        '.wpd'
+        '.wpd',
+        '.odt',
+        '.md',
+        '.epub'
     ],
     'Android': [
         '.apk',
@@ -72,7 +81,9 @@ extensions = {
         '.pkg',
         '.tar.gz',
         '.z',
-        '.tar'
+        '.tar',
+        '.bz2',
+        '.tar.bz2'
     ],
     'Executables': [
         '.exe',
@@ -82,14 +93,17 @@ extensions = {
         '.pl',
         '.jar',
         '.msi',
-        '.wsf'
+        '.wsf',
+        '.app',
+        '.command'
     ],
     'Midia': [
         '.dmg',
         '.iso',
         '.cso',
         '.toast',
-        '.vcd'
+        '.vcd',
+        '.img'
     ],
     'Data': [
         '.csv',
@@ -100,13 +114,17 @@ extensions = {
         '.mdb',
         '.sav',
         '.sql',
-        '.xml'
+        '.xml',
+        '.parquet',
+        '.feather'
     ],
     'Fonts': [
         '.fnt',
         '.fon',
         '.otf',
-        '.ttf'
+        '.ttf',
+        '.woff',
+        '.woff2'
     ],
     'Programming': [
         '.htm',
@@ -124,7 +142,12 @@ extensions = {
         '.sh',
         '.swift',
         '.vb',
-        '.json'
+        '.json',
+        '.py',
+        '.ts',
+        '.go',
+        '.rb',
+        '.kt'
     ],
     'System': [
         '.bak',
