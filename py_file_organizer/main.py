@@ -4,7 +4,16 @@ from consolemenu import ConsoleMenu
 # noinspection PyPackageRequirements
 from consolemenu.items import FunctionItem
 
-from py_file_organizer.functions import PyFileOrganizer
+if __package__ in {None, ''}:
+    import os
+    import sys
+
+    package_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if package_root not in sys.path:
+        sys.path.insert(0, package_root)
+    from py_file_organizer import functions
+else:
+    from . import functions
 
 
 class PyFileOrganizerUI:
@@ -34,7 +43,10 @@ class PyFileOrganizerUI:
 
     def on_start_app(self):
         path = str(input('Paste the directory location: '))
-        organizer = PyFileOrganizer(path)
+        organizer = functions.PyFileOrganizer(path)
+        if not organizer._check_dir():
+            self._wait_user()
+            return
         organizer.run()
         self._wait_user()
 

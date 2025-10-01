@@ -77,17 +77,22 @@ class PyFileOrganizer:
             return 0
 
         self._move(arquivo, target_dir)
-
         return 1
 
-    @staticmethod
-    def _get_target_dir(extension):
+    def _get_target_dir(self, extension):
         for dirname, exts in extensions.items():
             if extension in exts:
                 return dirname
         return None
 
     def _get_files(self):
+        onlyfiles = [f for f in listdir(self.directory)
+                     if isfile(join(self.directory, f))]
+        return onlyfiles
+
+    def _create_organization_dirs(self):
+        for dirname, exts in extensions.items():
+            self._create_dir(dirname)
         onlyfiles = [f for f in listdir(self.directory)
                      if isfile(join(self.directory, f))]
         return onlyfiles
