@@ -4,16 +4,16 @@ from consolemenu import ConsoleMenu
 # noinspection PyPackageRequirements
 from consolemenu.items import FunctionItem
 
-if __package__ in {None, ''}:  # pragma: no cover - allow running as `python main.py`
+if __package__ in {None, ''}:
     import os
     import sys
 
     package_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     if package_root not in sys.path:
         sys.path.insert(0, package_root)
-    from py_file_organizer import functions  # type: ignore
-else:  # pragma: no cover
-    from . import functions  # type: ignore
+    from py_file_organizer import functions
+else:
+    from . import functions
 
 
 class PyFileOrganizerUI:
