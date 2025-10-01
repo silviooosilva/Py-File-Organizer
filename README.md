@@ -1,55 +1,57 @@
 # Py File Organizer
 
-Organize automaticamente arquivos em pastas baseadas na extensao, mantendo seus diretórios sempre limpos.
+Automatically sort your files into folders based on their extension and keep your directories tidy.
 
-## Visao geral
-- Detecta a extensao de cada arquivo e move para a pasta correspondente definida em `py_file_organizer/extensions.py`.
-- Interface em modo texto usando `console-menu` para facilitar o uso.
-- Tratamento de erros basico para diretórios inexistentes ou ja organizados.
+## Overview
+- Detects every file extension and moves the file to the matching folder defined in `py_file_organizer/extensions.py`.
+- Ships with a console-menu based interface so you can run it interactively.
+- Provides basic error handling for missing or already organized directories.
 
-## Pre-requisitos
-- Python 3.8 ou superior.
-- `pip` configurado no PATH.
-- Ambiente virtual (opcional, mas recomendado).
+## Prerequisites
+- Python 3.8 or newer.
+- `pip` available on your PATH.
+- A virtual environment is optional but recommended.
 
-## Como configurar o ambiente
+## Environment setup
 ```bash
-# clone o repositorio
+# clone the repository
 git clone https://github.com/silviooosilva/Py-File-Organizer.git
 cd Py-File-Organizer
 
-# (opcional) crie e ative um ambiente virtual
+# (optional) create and activate a virtual environment
 python3 -m venv .venv
 source .venv/bin/activate  # Windows: .venv\\Scripts\\activate
 
-# dependencias do aplicativo
+# application dependencies
 pip install -r requirements.txt
 
-# dependencias para desenvolvimento e testes
+# development and testing dependencies
 pip install -r requirements_dev.txt
 ```
 
-## Como executar o organizador
+## How to run the organizer
 ```bash
 python3 -m py_file_organizer.main
+# or pass the target directory directly
+python3 -m py_file_organizer.main /path/to/directory
 ```
-O programa abre um menu interativo. Escolha `Start App`, cole o caminho absoluto do diretorio que deseja organizar e confirme. As pastas sao criadas conforme o mapeamento definido em `py_file_organizer/extensions.py`.
+Without arguments the program opens an interactive menu: choose `Start App`, paste the absolute path of the directory you want to organize, and confirm. When you supply the directory as a CLI argument the organization runs immediately, which is handy for automation. Folders are created according to the mapping in `py_file_organizer/extensions.py`.
 
-## Testes e manutencao de qualidade
-### Testes unitarios
+## Testing and quality checks
+### Unit tests
 ```bash
 python3 -m pytest tests/ -v
 ```
-Ou utilize o atalho com relatorio de cobertura:
+Or use the Makefile shortcut with coverage:
 ```bash
 make tests
 ```
 
-### Testes comportamentais (BDD)
+### BDD scenarios
 ```bash
 python3 -m pytest bdd/ -v
 ```
-Ou ainda:
+Or run:
 ```bash
 make bdd
 ```
@@ -58,23 +60,23 @@ make bdd
 ```bash
 flake8 .
 ```
-(O comando `make lint` executa os testes com cobertura e, em seguida, roda o lint.)
+(The `make lint` command runs the tests with coverage first and then executes flake8.)
 
-## Estrutura do projeto
+## Project layout
 ```
 py_file_organizer/
-├── main.py            # Interface interativa baseada em console-menu
-├── functions.py       # Regras de organizacao de arquivos
-├── extensions.py      # Mapeamento de extensoes para pastas
+├── main.py            # Console-menu interface and CLI entrypoint
+├── functions.py       # File organization logic
+├── extensions.py      # Extension-to-folder mapping
 └── __init__.py
 ```
-Os testes unitarios vivem em `tests/` e os cenarios comportamento em `bdd/`. Imagens de demonstracao estao em `demo/`.
+Unit tests live in `tests/`, BDD scenarios in `bdd/`, and demo screenshots in `demo/`.
 
-## Contribuindo
-Sinta-se a vontade para abrir issues ou pull requests. Antes de enviar mudancas, execute os testes (`make tests`) e o lint (`flake8 .`) para garantir que tudo continua funcionando.
+## Contributing
+Feel free to open issues or pull requests. Before submitting changes, run the test suite (`make tests`) and the linter (`flake8 .`) to ensure everything still works.
 
-## Licenca
-Distribuido sob a licenca MIT. Consulte `LICENSE` para mais detalhes.
+## License
+Released under the MIT License. See `LICENSE` for details.
 
-## Autor
-Projeto criado por Silvio Silva.
+## Author
+Project created by Silvio Silva.
