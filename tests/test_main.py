@@ -74,9 +74,11 @@ def test_on_start_app(mock_wait_user,
                       mock_input):
     ui = PyFileOrganizerUI()
     mock_input.return_value = 'path'
+    mock_py_file_organizer.return_value._check_dir.return_value = True
     ui.on_start_app()
     mock_input.assert_called_once_with('Paste the directory location: ')
     mock_py_file_organizer.assert_called_once_with('path')
+    mock_py_file_organizer()._check_dir.assert_called_once_with()
     mock_py_file_organizer().run.assert_called_once_with()
 
     mock_wait_user.assert_called_once_with()
@@ -96,9 +98,33 @@ def test_on_info(mock_wait_user, mock_print):
 @patch(prefixed('print'))
 def test_main(mock_print, mock_py_file_organizer_ui):
     from py_file_organizer.main import main
-    main()
+    exit_code = main([])
     mock_py_file_organizer_ui.assert_called_once_with()
     mock_py_file_organizer_ui().run.assert_called_once_with()
     mock_print.has_calls([
         call("[!] Enjoy :) Bye"),
         call(f'{Fore.YELLOW}By: Sílvio Silva')])
+    assert exit_code == 0
+
+
+@patch(prefixed('PyFileOrganizerUI'))
+@patch(prefixed('functions.PyFileOrganizer'))
+@patch(prefixed('print'))
+def test_main_with_directory(mock_print,
+                             mock_py_file_organizer,
+                             mock_py_file_organizer_ui):
+    from py_file_organizer.main import main
+
+    instance = mock_py_file_organizer.return_value
+    instance._check_dir.return_value = True
+
+    exit_code = main(['some/path'])
+
+    mock_py_file_organizer.assert_called_once_with('some/path')
+    instance._check_dir.assert_called_once_with()
+    instance.run.assert_called_once_with()
+    mock_py_file_organizer_ui.assert_not_called()
+    mock_print.has_calls([
+        call("[!] Enjoy :) Bye"),
+        call(f'{Fore.YELLOW}By: Sílvio Silva')])
+    assert exit_code == 0
