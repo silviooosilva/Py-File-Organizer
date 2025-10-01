@@ -24,8 +24,10 @@ def test_wait_user(mock_input):
 
 @patch(prefixed('ConsoleMenu'))
 @patch.object(PyFileOrganizerUI, '_add_info_item')
+@patch.object(PyFileOrganizerUI, '_add_background_item')
 @patch.object(PyFileOrganizerUI, '_add_start_item')
 def test_run(mock_add_start_item,
+             mock_add_background_item,
              mock_add_info_item,
              mock_console_menu):
     ui = PyFileOrganizerUI()
@@ -35,6 +37,7 @@ def test_run(mock_add_start_item,
         'Organize your files',
     )
     mock_add_start_item.assert_called_once_with(mock_console_menu())
+    mock_add_background_item.assert_called_once_with(mock_console_menu())
     mock_add_info_item.assert_called_once_with(mock_console_menu())
     mock_console_menu().show.assert_called_once_with()
 
@@ -84,6 +87,22 @@ def test_on_start_app(mock_wait_user,
     mock_wait_user.assert_called_once_with()
 
 
+@patch('builtins.input')
+@patch('py_file_organizer.main._start_background_job')
+@patch.object(PyFileOrganizerUI, '_wait_user')
+def test_on_start_app_background(mock_wait_user,
+                                 mock_start_background_job,
+                                 mock_input):
+    ui = PyFileOrganizerUI()
+    mock_input.return_value = 'path'
+
+    ui.on_start_app_background()
+
+    mock_input.assert_called_once_with('Paste the directory location: ')
+    mock_start_background_job.assert_called_once_with('path')
+    mock_wait_user.assert_called_once_with()
+
+
 @patch(prefixed('print'))
 @patch.object(PyFileOrganizerUI, '_wait_user')
 def test_on_info(mock_wait_user, mock_print):
@@ -125,6 +144,25 @@ def test_main_with_directory(mock_print,
     instance.run.assert_called_once_with()
     mock_py_file_organizer_ui.assert_not_called()
     mock_print.has_calls([
+        call("[!] Enjoy :) Bye"),
+        call(f'{Fore.YELLOW}By: Sílvio Silva')])
+    assert exit_code == 0
+
+
+@patch(prefixed('_start_background_job'))
+@patch(prefixed('PyFileOrganizerUI'))
+@patch(prefixed('print'))
+def test_main_with_directory_background(mock_print,
+                                        mock_py_file_organizer_ui,
+                                        mock_start_background_job):
+    from py_file_organizer.main import main
+
+    exit_code = main(['some/path', '--background'])
+
+    mock_start_background_job.assert_called_once_with('some/path')
+    mock_py_file_organizer_ui.assert_not_called()
+    mock_print.has_calls([
+        call("Started background organization for: some/path"),
         call("[!] Enjoy :) Bye"),
         call(f'{Fore.YELLOW}By: Sílvio Silva')])
     assert exit_code == 0

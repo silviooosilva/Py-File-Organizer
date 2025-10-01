@@ -34,8 +34,11 @@ pip install -r requirements_dev.txt
 python3 -m py_file_organizer.main
 # or pass the target directory directly
 python3 -m py_file_organizer.main /path/to/directory
+# run directly in the background (returns immediately)
+python3 -m py_file_organizer.main --background /path/to/directory
 ```
 Without arguments the program opens an interactive menu: choose `Start App`, paste the absolute path of the directory you want to organize, and confirm. When you supply the directory as a CLI argument the organization runs immediately, which is handy for automation. Folders are created according to the mapping in `py_file_organizer/extensions.py`.
+You can also pick `Start App (background)` in the menu or pass `--background` on the CLI to let the organizer work asynchronously while you keep using the terminal.
 
 ## Testing and quality checks
 ### Unit tests

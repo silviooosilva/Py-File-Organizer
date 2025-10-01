@@ -1,6 +1,7 @@
 import argparse
 import os
 import sys
+import threading
 
 from colorama import Fore
 # noinspection PyPackageRequirements
@@ -26,6 +27,11 @@ def _parse_args(arguments=None):
         nargs='?',
         help='Directory to organize. When omitted, the interactive menu is shown.',
     )
+    parser.add_argument(
+        '--background', '-b',
+        action='store_true',
+        help='Run the organization in the background (only when a directory is provided).',
+    )
     return parser.parse_args(arguments if arguments is not None else [])
 
 
@@ -46,6 +52,17 @@ def _print_farewell():
     print(f'{Fore.YELLOW}By: Sílvio Silva')
 
 
+def _start_background_job(path: str, wait_callback=None):
+    thread = threading.Thread(
+        target=_organize_directory,
+        args=(path,),
+        kwargs={'wait_callback': wait_callback},
+        daemon=True,
+    )
+    thread.start()
+    return thread
+
+
 class PyFileOrganizerUI:
     def __init__(self):
         pass
@@ -59,6 +76,7 @@ class PyFileOrganizerUI:
                            "Organize your files")
 
         self._add_start_item(menu)
+        self._add_background_item(menu)
         self._add_info_item(menu)
 
         menu.show()
@@ -71,9 +89,20 @@ class PyFileOrganizerUI:
         start_item = FunctionItem("Start App", self.on_start_app)
         menu.append_item(start_item)
 
+    def _add_background_item(self, menu):
+        background_item = FunctionItem("Start App (background)",
+                                       self.on_start_app_background)
+        menu.append_item(background_item)
+
     def on_start_app(self):
         path = str(input('Paste the directory location: '))
         _organize_directory(path, wait_callback=self._wait_user)
+
+    def on_start_app_background(self):
+        path = str(input('Paste the directory location: '))
+        _start_background_job(path)
+        print(f"Started background organization for: {path}")
+        self._wait_user()
 
     def on_info(self):
         print('« Go To : https://github.com/silviooosilva/Py-File-Organizer »')
@@ -83,6 +112,11 @@ class PyFileOrganizerUI:
 def main(argv=None):
     args = _parse_args(argv)
     if args.directory:
+        if args.background:
+            _start_background_job(args.directory)
+            print(f"Started background organization for: {args.directory}")
+            _print_farewell()
+            return 0
         success = _organize_directory(args.directory)
         _print_farewell()
         return 0 if success else 1
